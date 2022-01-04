@@ -1,3 +1,19 @@
-under construction
+This is simply the code to create a plot of how long English top flight managers/head coaches have been in the role with their clubs on any given day between 1 July 1946 to 30 June 2021. This is 95% just a data collection/entry and 5% data visualisation exercise, so not much “analysis” going on; but well, this is only my first ever “personal project”.
+This idea is by no means original: I found something practically the same [here](https://experimental361.com/2015/12/06/manager-tenure-2/), although the data in there begins only in 1965 and has not been updated since 2015.
 
-bangke susah banget sih ini
+### How it is done
+In Excel, I created rows of dates from 1 July 1946 to 30 June 2021. The columns are all clubs which have played at least one season in the English top flight (old First Division and current Premiership/Premier League) between the 1946/47 and 2020/21 season. For each club, I look at the start and end date of each manager and matched it with the rows of dates, so the starting date corresponds with the manager’s day 1, up until the end date which is the manager’s day X.
+Once this collection is complete, it’s simply a matter of reading the spreadsheet and calculating the average number of days all of the clubs’ managers have been in the role for each date, then plotting that with Matplotlib.
+My main sources are Wikipedia and every individual team’s list of managers in Soccerbase such as [this](https://www.soccerbase.com/teams/team.sd?team_id=942&teamTabs=managers).
+
+### Business rules:
+* Only “permanent” managers/head coaches are considered, so “caretaker” managers are discounted. In cases of “caretaker” managers later being made permanent, their time as manager/head coach is considered to begin only on the date of permanent appointment, wherever that information is available.
+In addition, “interim” managers (e.g. Guus Hiddink at Chelsea) are considered “permanent”, since they usually have a clear intended end date – however short-term – in their appointment in contrast to a “caretaker”.
+* A single “season” starts on 1 July and end on 30 June. The only exception is 2020, when the dates are moved to 31 July/1 August to account for the March-April 2020 COVID-19 shutdown and the resulting later end date to the 2019/20 season.
+* Only the clubs’ time in the top division are included in the calculation of the average. So relegated managers (should they stay) cease to be considered as part of the top flight on 1 July of the following season, and they are ‘replaced’ by the managers of newly promoted clubs.
+* By far the biggest limitation of most internet sources is the inexact nature of start and end dates of the majority of managers before the 1990s. Starting from the late 1990s, almost all appointments/sackings are easily verifiable through internet news articles, but before that, most sources would only describe the appointment/sacking time down to the month. Scanned old newspaper archives ([example](https://news.google.com/newspapers?nid=GGgVawPscysC&dat=19641130&b_mode=2&hl=en)) are indeed available, but they are far from complete.
+So whenever internet sources state the start date of a manager only as month and year, I recorded it as beginning on the 1st of the month; and if it’s the end date, I recorded it as ending on the 28th/29th/30th/31st of the month.
+
+### Possible further work:
+* The majority of managers on the beginning of the 1946/47 season (first season post-World War 2) were appointed before the war began in 1939, and they are considered to have stayed in the role in the 7 years in between, somewhat artificially inflating their tenure. An argument can be made that these 7 years should have been discounted to reflect the fact that no ‘regular’ football is played.
+* Similar work obviously can be done to the lower divisions of England and also other countries’ top flight leagues, so cross-country/league comparisons can be made.
